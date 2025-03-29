@@ -1,0 +1,67 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "silas",
+    "collectionId": "af857287-6f41-4ebb-b433-ae5a3ea7456f",
+    "dateExported": "2025-02-21T00:07:07.198Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3888c350-34fe-45f3-a0c5-85852a46f037",
+            "colId": "af857287-6f41-4ebb-b433-ae5a3ea7456f",
+            "containerId": "",
+            "name": "http://localhost:4000/api/admin/add-consultant",
+            "url": "http://localhost:4000/api/admin/add-consultant",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2025-02-21T00:05:01.531Z",
+            "modified": "2025-02-21T00:05:01.531Z",
+            "headers": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "first name"
+                    },
+                    {
+                        "name": "email",
+                        "value": "first email"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "degree",
+                        "value": "MBBS"
+                    },
+                    {
+                        "name": "exprience",
+                        "value": "4 years"
+                    },
+                    {
+                        "name": "about",
+                        "value": "test about"
+                    },
+                    {
+                        "name": "fee",
+                        "value": "40"
+                    },
+                    {
+                        "name": "address",
+                        "value": "'[ \"line1\": \"address 1\"]'"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "",
+                        "value": "c:\\Users\\SILAS GABRIEL\\Desktop\\Salz\\frontend\\src\\assets\\upload_area.png"
+                    }
+                ]
+            }
+        }
+    ],
+    "ref": "qtaX7VkIJLmKjIcOuSQs4gDM5HNHEVonZTGLxdOifDVpaUQnHhakrjUWZUIkZn391QPIZXKF17GB6SV0Hy2YXQ"
+}
