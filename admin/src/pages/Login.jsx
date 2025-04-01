@@ -3,6 +3,7 @@ import { assets } from '../assets/assets'
 import { AdminContext } from '../context/AdmiContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { ConsultantContext } from '../context/ConsultantContext'
 
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   const { setAToken, backendUrl } = useContext(AdminContext)
+  const { setDToken} = useContext(ConsultantContext)
 
   const onSubmitHandler = async (event) => {
 
@@ -29,6 +31,16 @@ const Login = () => {
         }
 
       } else {
+
+        const { data } = await axios.post(backendUrl + '/api/consultant/login', { email, password })
+        if (data.success) {
+          localStorage.setItem('dToken', data.token)
+          setDToken(data.token);
+          console.log(data.token);
+          
+        }else{
+          toast.error(data.message)
+        }
 
       }
     } catch (error) {
