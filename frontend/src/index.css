@@ -16,3 +16,27 @@
 *{
     font-family: Outfit;
 }
+.chat-i {
+    background: linear-gradient(#F4F0FF, #DACDFF);
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+     0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+.chatbot-popup{
+    width: 420px;
+    overflow: hidden;
+    background: linear-gradient(#F4F0FF, #DACDFF);
+    border-radius: 15px;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+     0 32px 64px -48px rgba(0, 0, 0, 0.5);
+
+}
+
+.chat-header{
+    display: flex;
+    padding: 15px 22px;
+    align-items: center;
+    justify-content: space-between;
+    
+
+
+}

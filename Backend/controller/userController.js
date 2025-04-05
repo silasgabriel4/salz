@@ -240,16 +240,62 @@ const cancelAppointment = async (req,res)=>{
 
 }
 
-const razorpayInstance = new razorpay({
-  key_id:' ',
-  key_secret: ' '
-})
 
-// api to make payment of appointment using razorpay
- 
-const paymentRazorpay = async (req, res) =>{
+// Chatbot implementation
+const mentalHealthResponses = {
+  "stress": "Stress is a common issue. Try these techniques:\n1. Practice deep breathing exercises\n2. Take short breaks during work\n3. Maintain a regular sleep schedule\n4. Engage in physical activity",
+  "anxiety": "For anxiety management:\n1. Practice mindfulness meditation\n2. Limit caffeine intake\n3. Try grounding techniques (5-4-3-2-1 method)\n4. Keep a worry journal",
+  "depression": "For mild depression:\n1. Maintain social connections\n2. Establish a daily routine\n3. Get sunlight exposure\n4. Consider talking to someone you trust",
+  "sleep": "For better sleep:\n1. Maintain consistent sleep schedule\n2. Create a relaxing bedtime routine\n3. Avoid screens before bed\n4. Keep your bedroom cool and dark",
+  "default": "I'm sorry, I can't provide specific advice for this issue. For more complex mental health concerns, I recommend booking a session with one of our professional consultants."
+};
 
-}   
+const handleChatbotMessage = async (req, res) => {
+  try {
+    const { message } = req.body;
+    const userId = req.user.id;
+
+    if (!message) {
+      return res.json({ success: false, message: "Message is required" });
+    }
+
+    const lowerCaseMessage = message.toLowerCase();
+    let response, needsConsultant = false;
+
+    if (lowerCaseMessage.includes('stress')) {
+      response = mentalHealthResponses.stress;
+    } else if (lowerCaseMessage.includes('anxiety')) {
+      response = mentalHealthResponses.anxiety;
+    } else if (lowerCaseMessage.includes('depress')) {
+      response = mentalHealthResponses.depression;
+    } else if (lowerCaseMessage.includes('sleep')) {
+      response = mentalHealthResponses.sleep;
+    } else {
+      response = mentalHealthResponses.default;
+      needsConsultant = true;
+    }
+
+    res.json({
+      success: true,
+      response,
+      needsConsultant,
+      consultantLink: needsConsultant ? '/consultants' : null
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { 
+  registerUser, 
+  loginUser, 
+  getProfile, 
+  updateProfile, 
+  bookAppointment, 
+  listAppointment, 
+  cancelAppointment,
+  handleChatbotMessage
+};
 
 
-export { registerUser, loginUser, getProfile,updateProfile, bookAppointment, listAppointment, cancelAppointment };
